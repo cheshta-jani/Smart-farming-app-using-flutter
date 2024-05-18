@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "446791270052",
+    "firebase_url": "https://smartfarming-8313e-default-rtdb.firebaseio.com/",
+    "project_id": "smartfarming-8313e",
+    "storage_bucket": "smartfarming-8313e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:446791270052:android:64a8dced0a70b801fb7031",
+        "android_client_info": {
+          "package_name": "com.example.farmassist"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "446791270052-atr5e1p7dir41osaf5ksp2jnuvo136op.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.farmassist",
+            "certificate_hash": "650c6c1e3dc8bc0daa285e32a39432b80dbe70d3"
+          }
+        },
+        {
+          "client_id": "446791270052-eilpgib34rn33s471og066rs7v5b6cf2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCYAzxsNMfgUv1Wb3tHQONp-iJleqOGW6E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "446791270052-eilpgib34rn33s471og066rs7v5b6cf2.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "446791270052-qhoogd9ds33g9536utfqako49p6782np.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.farmassist"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
