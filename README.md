@@ -1,176 +1,80 @@
-# Farmassist
+This mobile app has many features:
+1) User Management:
+•	Users can register and login using Firebase authentication.
+•	Users can manage their profile information.
 
-<p align=center><img src="./docs/img/app_icon.png" width=20% height=20%></p>
+2) Planting & Harvesting Data Management:
+•	Users can add and view planting and harvesting information for various crops.
+•	The app stores data like plant name, number of plants, date and estimated harvest date (week).
 
-Farmassist is a smart farming app for IoT and AI-powered plant disease detection. It is built with Flutter and uses Firebase as its backend.
+3) Real-time Monitoring:
+•	The app integrates with a virtual IoT simulator (Node-RED) to receive real-time data on: Air temperature, air humidity, Soil moisture, soil salinity and soil Ph
+•	Real-time sensor readings are displayed in the app.
 
-### App Screenshots
+4) Data Analysis:
+•	The app implements a statistical analysis tool to generate a bar graph representing total harvesting yield for each harvested plant.
 
-| <img src="./docs/img/view_news.gif"> | <img src="./docs/img/monitor_iot.gif"> | <img src="./docs/img/detect_disease.gif"> |
-| :----------------------------------: | :------------------------------------: | :---------------------------------------: |
-|       _View Agricultural News_       |      _Receive IoT Telemetry Data_      |          _Detect Plant Disease_           |
+5) Plant Disease Detection:
+•	The app integrates a trained TensorFlow Lite model for plant disease detection using images captured from the app.
+•	The app provides suggestions and solutions for detected diseases.
+• It detects 5 leaf diseases: corn common rust, corn gray leaf spot, potato early blight, strawberry leaf scorch, tomato leaf mold and tomato mosaic virus.
+• The trained model can be found in assests folder as model.tflite file
 
-### Download Android APK
+6)News and weather Features:
+The app integrates news and weather APIs to display:
+•	Latest science news
+•	Real-time weather information for the required location
 
-You can download the latest version of the Android APK [here](https://github.com/farmassistX/farmassist/releases/tag/v1.0.21).
+Below are the screenshots for the same:
 
-## Architecture
+Signup Page:
+ ![image](https://github.com/cheshta-jani/Smart-farming-app-using-flutter/assets/122821547/3484a551-794d-4e76-ba2b-7caab529ff9d)
+ 
+Login Page:
+ ![image](https://github.com/cheshta-jani/Smart-farming-app-using-flutter/assets/122821547/2f14b978-7f69-4a05-9242-9c9e38ba0df4)
 
-<p align=center><img src="./docs/img/architecture.png" width=75% height=75%></p>
-<p align="center"><i>Architecture Diagram of Farmassist</i></p>
+Home Page:
+![image](https://github.com/cheshta-jani/Smart-farming-app-using-flutter/assets/122821547/a903d728-58c9-476f-9637-beb50369af82)
 
-The above illustration shows a high level overview of the Farmassist project. Farmassist consists of 3 subsystems:
+Planting: 
+![image](https://github.com/cheshta-jani/Smart-farming-app-using-flutter/assets/122821547/f5a5697e-57c0-4171-b426-cf5dec38faae)
 
-- [Farm Management Subsystem](#farm-management): Users can view agricultural news and manage planting and harvesting data.
-- [IoT Monitoring Subsystem](#iot-monitoring): Users can view IoT telemetry data from the farm in the form of charts and receive alert notifications for abnormal telemetry data.
-- [Plant Disease Detection Subsystem](#plant-disease-detection): Users can take a picture of a diseased plant via camera to detect the disease type.
+ ![image](https://github.com/cheshta-jani/Smart-farming-app-using-flutter/assets/122821547/e9af3a9b-f9d9-4bd2-8065-0cd0f588cfeb)
 
-The backend services used are as follows:
+![image](https://github.com/cheshta-jani/Smart-farming-app-using-flutter/assets/122821547/0ca9a59c-70bc-43e2-9665-ebfbd7bc9986)
 
-- [Firebase Authentication](https://firebase.google.com/products/auth)
-- [Cloud Firestore](https://firebase.google.com/products/firestore)
-- [Realtime Database](https://firebase.google.com/products/realtime-database)
-- [Cloud Functions](https://firebase.google.com/products/functions)
-- [Cloud Messaging](https://firebase.google.com/products/cloud-messaging)
-- [Google Cloud AutoML Vision](https://cloud.google.com/automl)
+Harvesting:
+![image](https://github.com/cheshta-jani/Smart-farming-app-using-flutter/assets/122821547/06d2e174-7351-4fc2-adc9-fa487a347b6c)
 
-The following sections explain more detail about the services and components used by the corresponding subsystems.
+![image](https://github.com/cheshta-jani/Smart-farming-app-using-flutter/assets/122821547/12a262bc-814d-4126-8e62-579f81d924ed)
 
-## Authentication and User Profile
+![image](https://github.com/cheshta-jani/Smart-farming-app-using-flutter/assets/122821547/3ce96e53-4da5-42da-b78b-304ecfc07290)
 
-The signup and login flow of Farmassist is developed using the [Bloc](https://bloclibrary.dev/#/) library and Firebase Authentication. After a user signs up successfully, the user data will be stored in the data model of Cloud Firestore as shown below:
+View Statistics Page:
+![image](https://github.com/cheshta-jani/Smart-farming-app-using-flutter/assets/122821547/b964c72a-5d96-4e5f-8450-e218231ca823)
 
-```
-{
-  "users": { // "users" collection
-    "4lbwvicymz71LfY9POHZ": { // "userId" document
-      "id": "4lbwvicymz71LfY9POHZ",
-      "email": "example@farmassist.com",
-      "displayName": "Jack",
-      "tokens": [ ... ] // used by Cloud Messaging
-    },
-    "4DkFgqNdjZnEh78YmsE3": { ... },
-    // more "userId" documents
-  }
-}
-```
+![image](https://github.com/cheshta-jani/Smart-farming-app-using-flutter/assets/122821547/a5c9ba7e-7227-4f6a-a1df-142140d3bd40)
 
-## Farm Management
 
-Cloud Firestore, a NoSQL, document-oriented database, is used to store farm management data using key-value pairs. In Cloud Firestore, each collection consists of a number of documents in which each document can store a number of subcollections.
+IOT Monitoring:
+![WhatsApp Image 2024-05-18 at 16 36 13_fb42df0f](https://github.com/cheshta-jani/Smart-farming-app-using-flutter/assets/122821547/4dbeedb2-62f2-457f-9a56-42dcdaf36147)
 
-There are 2 types of farm management data stored: **planting data** and **harvesting data**. An example of the data model for harvesting data is shown below:
+![WhatsApp Image 2024-05-18 at 16 36 13_5bfbcd73](https://github.com/cheshta-jani/Smart-farming-app-using-flutter/assets/122821547/999db6ae-f4fc-4e42-9246-172ff195c3db)
 
-```
-{
-  "planting": { // "planting" collection
-    "4lbwvicymz71LfY9POHZ": { // "userId" document
-      "months": { // "months" subcollection
-        "jan": { // "jan" document
-          "plantName": "tomato",
-          "noOfPlants": "100",
-          "plantDate": "25-03-2021",
-          "estimatedHarvestWeek": "9",
-          "harvestDate": "25-5-2021",
-          "harvested": true
-        },
-        "feb": { ... } // "feb" document
-        // more documents for the remaining months
-      }
-    },
-    // more "userId" documents
-  }
-}
-```
+ 
+Values getting updated in database in realtime.
+![image](https://github.com/cheshta-jani/Smart-farming-app-using-flutter/assets/122821547/5290649c-7129-4797-9dc9-fa45df92cad5)
 
-Under farm management, 2 extra APIs are used:
+Node-RED simulator flow: 
+![image](https://github.com/cheshta-jani/Smart-farming-app-using-flutter/assets/122821547/b5c1109f-7c38-4cf0-aedf-bf3439b2f301)
 
-- [News API](https://newsapi.org/docs/endpoints/top-headlines) is used to fetch top headlines for science category.
-- [OpenWeather API](https://openweathermap.org/current) is used to obtain weather data of the farm location.
+Dashboard:
+![image](https://github.com/cheshta-jani/Smart-farming-app-using-flutter/assets/122821547/3b59c719-1dff-415d-bef6-3fbfb0e3acbd)
+![image](https://github.com/cheshta-jani/Smart-farming-app-using-flutter/assets/122821547/0b6280a0-2c01-49fe-bf04-0e73967cb8dc)
 
-## IoT Monitoring
+Diseases Detection Page:
+![image](https://github.com/cheshta-jani/Smart-farming-app-using-flutter/assets/122821547/6bb4a775-4346-48af-af5f-9e36ad5cd689)
 
-Realtime Database acts as a repository of IoT telemetry data that performs data synchronization with the Farmassist app. The overall process of IoT monitoring is described as follows:
+My profile and logout page:
+![image](https://github.com/cheshta-jani/Smart-farming-app-using-flutter/assets/122821547/d6c6cd7a-f4cd-4766-9aac-d62b7c708503)
 
-1. When new telemetry data is stored in Realtime Database, Cloud Functions will be triggered.
-2. Cloud Functions execute a function to check for abnormal values in the received telemetry data.
-3. If abnormal values exist, Cloud Functions will call Cloud Messaging service to send an alert notification to the relevant app user, which is identified by a unique token.
-
-5 types of telemetry data are stored as JSON objects in Realtime Database:
-
-- Air Humidity (%)
-- Air Temperature (°C)
-- Soil Moisture (%)
-- Soil pH (pH)
-- Soil Salinity (Millisiemens/cm)
-
-Each telemetry data is stored as a key-value pair of timestamp and value. An example of the data model for telemetry data is shown below:
-
-```
-{
-  "telemetry_data": {
-    "4lbwvicymz71LfY9POHZ": { // userId
-      "humidity": {
-        "1617979596947": "56.64", // timestamp: value
-        "1617979596949": "55.89",
-        // more values
-      },
-      "moisture": { ... },
-      "pH": { ... },
-      "salinity": { ... },
-      "temperature": { ... }
-    },
-    // more telemetry data from other users
-  }
-}
-```
-
-For demonstration purpose, a minimal IoT device simulator is built to send telemetry data to Realtime Database. For more information, you can refer to [Farmassist IoT Device Simulator](https://github.com/farmassistX/farmassist-iot-device-simulator).
-
-The code for Cloud Functions can be found in [Farmassist Firebase](https://github.com/farmassistX/farmassist-firebase).
-
-## Plant Disease Detection
-
-A plant disease detection model was trained using Google Cloud AutoML Vision. The training dataset is a subset of [PlantVillage dataset from Mendeley Data](https://data.mendeley.com/datasets/tywbtsjrjv/1). A total of 2,941 diseased plant images that consists of 6 disease categories were used:
-
-- Corn Common Rust (500 images)
-- Corn Gray Leaf Spot (441 images)
-- Potato Early Blight (500 images)
-- Strawberry Leaf Scorch (500 images)
-- Tomato Leaf Mold (500 images)
-- Tomato Mosaic Virus (500 images)
-
-After training, the model was exported as a [TensorFlow Lite](https://www.tensorflow.org/lite) model, which is suitable to be run on a mobile device. You can find the trained model [here](/assets/model.tflite).
-
-## Flutter Packages Used
-
-Some of the useful Flutter packages used in the Farmassist app are listed in the table below. Refer to [pubspec.yaml](pubspec.yaml) for the complete package information.
-
-|                                                                     Package                                                                     | Functions                                                                                                                                       |
-| :---------------------------------------------------------------------------------------------------------------------------------------------: | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-|                                                  [Provider](https://pub.dev/packages/provider)                                                  | A simple state management tool                                                                                                                  |
-| [bloc](https://bloclibrary.dev/#/) and [flutter_bloc](https://pub.dev/documentation/flutter_bloc/latest/flutter_bloc/flutter_bloc-library.html) | A state management library implemented using [BLoC](https://www.raywenderlich.com/4074597-getting-started-with-the-bloc-pattern) design pattern |
-|                                                  [fl_chart](https://pub.dev/packages/fl_chart)                                                  | A powerful Flutter chart library with beautiful UI                                                                                              |
-|                                                 [getwidget](https://pub.dev/packages/getwidget)                                                 | A Flutter UI library with 1000+ pre-made UI components                                                                                          |
-
-## Setup
-
-Things to do if you want to fork or contribute to the project.
-
-1. [Create a Firebase project and add Firebase to your Flutter app](https://firebase.google.com/docs/flutter/setup?platform=android).
-2. Refer to [Farmassist IoT Device Simulator](https://github.com/farmassistX/farmassist-iot-device-simulator) to see how fake telemetery data can be sent to Realtime Database.
-3. Refer to [Farmassist Firebase](https://github.com/farmassistX/farmassist-firebase) for the Cloud Functions code that call Cloud Messaging service.
-4. Refer to [Edge Device Model Quickstart](https://cloud.google.com/vision/automl/docs/edge-quickstart) if you want to train your own model for plant disease detection.
-5. Refer to [CI/CD for Flutter Apps Using GitHub Actions](https://betterprogramming.pub/ci-cd-for-flutter-apps-using-github-actions-b833f8f7aac) to set up a workflow that can release an APK for your Flutter app whenever someone pushes the code to GitHub. Instead of using `push` event, I set up a manual trigger with `workflow_dispatch` event.
-
-## References
-
-- [GitHub: Farmassist IoT Device Simulator](https://github.com/farmassistX/farmassist-iot-device-simulator)
-- [GitHub: Farmassist Firebase](https://github.com/farmassistX/farmassist-firebase)
-- [Bloc: Flutter Firebase Login Tutorial](https://bloclibrary.dev/#/flutterfirebaselogintutorial)
-- [FlutterFire: Cloud Messaging Usage](https://firebase.flutter.dev/docs/messaging/usage)
-- [Google Cloud AutoML Vision: Edge Device Model Quickstart](https://cloud.google.com/vision/automl/docs/edge-quickstart)
-- [Medium: AutoML Vision—How To Train Your Model?](https://towardsdatascience.com/automl-vision-how-to-train-your-model-c7e887051453)
-- [Medium: CI/CD for Flutter Apps Using GitHub Actions](https://betterprogramming.pub/ci-cd-for-flutter-apps-using-github-actions-b833f8f7aac)
-- [GitHub: Farmsmart Flutter App](https://github.com/farmsmart/farmsmart-flutter)
-- [GitHub: Best Flutter UI Templates](https://github.com/mitesh77/Best-Flutter-UI-Templates)
